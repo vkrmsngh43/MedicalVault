@@ -41,7 +41,13 @@ public class AuthenticationController {
 
 	@Autowired
 	JWTTokenService jwtTokenService;
-
+	
+	/**
+	 * Login URL.
+	 * @param appUserRequest
+	 * @return
+	 * @throws AuthenticationException
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> authenticate(@RequestBody AppUserRequest appUserRequest) throws AuthenticationException {
 		Authentication authentication = this.authenticationManager.authenticate(
@@ -54,7 +60,13 @@ public class AuthenticationController {
 		return ResponseEntity.ok(
 				new AuthenticationResponse(token, ErrorConstants.SUCCESS_STATUS_CODE, ErrorConstants.SUCCESS_MESSAGE));
 	}
-
+	
+	/**
+	 * Register a new user.
+	 * @param signupRequest
+	 * @return
+	 * @throws AuthenticationException
+	 */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ResponseEntity<?> userSignup(@RequestBody SignupRequest signupRequest) throws AuthenticationException {
 		Date currentTime = DateTimeHelper.getCurrentDate();
