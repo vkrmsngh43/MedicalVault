@@ -18,7 +18,7 @@ Java and spring boot framework.
 . mvn clean install 
 . to skip tests :  mvn -DskipTests=true clean install
 ```
-## To run
+## To Deploy
 ```
 . java -jar -Dserver.port={#port} -Dspring.profiles.active={default/prod} PEMedicalApp-0.0.1-SNAPSHOT.jar
 NOTE : in absence of run time parameters default profile which is 'default' and default port number which is '8080'
