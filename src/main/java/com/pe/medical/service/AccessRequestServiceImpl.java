@@ -59,7 +59,7 @@ public class AccessRequestServiceImpl implements AccessRequestService {
 			
 			//create the record in DB for verification purpose.
 			accessRequestRecordsRepository.save(accessRequestRecords);
-			// send to user via twillio
+			// send to user via 2FA
 			dispatcherService.dispatchAccessCodeToUser(user, requester, accessCode);
 			return true;
 		} else {
