@@ -33,8 +33,8 @@ public class JWTTokenService {
 			logger.info("Claims : " + claims.getSubject());
 			userName = claims != null ? claims.getSubject() : null;
 		} catch (Exception ex) {
-			logger.error("Error extracting username from token ");
-			ex.printStackTrace();
+			logger.error("Error extracting username from token " + ex.getMessage());
+			//ex.printStackTrace();
 		}
 		return userName;
 	}
@@ -50,7 +50,8 @@ public class JWTTokenService {
 			final Claims claims = this.getClaimsFromToken(token);
 			expiration = claims.getExpiration();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error("Error extracting Expiry date from token " + ex.getMessage());
+			//ex.printStackTrace();
 		}
 		return expiration;
 	}
@@ -60,7 +61,8 @@ public class JWTTokenService {
 		try {
 			claims = Jwts.parser().setSigningKey(SecurityConstants.JWT_SECRET).parseClaimsJws(token).getBody();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error("Error parsing claims from token " + ex.getMessage());
+			//ex.printStackTrace();
 		}
 		return claims;
 	}
