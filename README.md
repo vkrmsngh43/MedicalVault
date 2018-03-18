@@ -11,7 +11,7 @@ Java and spring boot framework.
 ```
 1. Java 1.7 or higher, Maven as build tool.
 2. Install Mysql. Create a DB named PE_Medical. Create a user root with pwd root
-3. Import the schema from src/main/data/PE_Medical.sql to the DB created in previous step.
+3. Import the schema from src/main/resources/data/PE_Medical.sql to the DB created in previous step.
 ```
 ## To Build
 ```
