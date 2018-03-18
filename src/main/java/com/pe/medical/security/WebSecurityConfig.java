@@ -65,14 +65,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		logger.info("Inside the HttpSecurity configure...");
 		httpSecurity.csrf().disable()
-				// .exceptionHandling()
-				// .authenticationEntryPoint(this.unauthorizedHandler)
-				// .and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**").permitAll()
+				.antMatchers("/actuator/**").permitAll()
 				.anyRequest().authenticated().and().cors();
 
-		// Custom JWT based authentication
+		// Add Custom JWT based authentication
 		httpSecurity.addFilterBefore(customAuthFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 

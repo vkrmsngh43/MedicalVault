@@ -17,6 +17,6 @@ public class DispatcherService {
 	public void dispatchAccessCodeToUser(User user, User requester, String accessCode) {
 		
 		logger.info("Dsiaptching accessCode to the user.");
-		//httpClient.sendMessage(user.getPhoneNumber(), user.getFirstName(), requester.getFirstName(), accessCode);
+		httpClient.sendMessage(user.getPhoneNumber(), user.getFirstName(), requester.getFirstName(), accessCode);
 	}
 }
