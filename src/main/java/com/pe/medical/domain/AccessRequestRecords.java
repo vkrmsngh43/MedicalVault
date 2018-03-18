@@ -40,6 +40,9 @@ public class AccessRequestRecords extends BaseDao{
 	@Column(name = "access_code_ttl")
 	private int accessCodeTtl;
 	
+	@Column(name = "created_at")
+	private Date createdDate;
+	
 	//Default constructor
 	public AccessRequestRecords() {
 		super();
@@ -98,6 +101,13 @@ public class AccessRequestRecords extends BaseDao{
 	}
 	public void setAccessCodeTtl(int accessCodeTtl) {
 		this.accessCodeTtl = accessCodeTtl;
+	}
+	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 }

@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.pe.medical.domain.UserRoles;
 
+/**
+ * Custom access roles.
+ * @author vikramsingh
+ *
+ */
 @Service
 public class AccessSecurityServiceImpl implements AccessSecurityService{
 
@@ -20,7 +25,7 @@ public class AccessSecurityServiceImpl implements AccessSecurityService{
 	public Boolean hasAccessToPrescriptionRecords() {
 		return SecurityContextHolder.getContext()
 				.getAuthentication().getAuthorities()
-				.contains(new SimpleGrantedAuthority(UserRoles.PRACTITIONER.toString()));
+				.contains(new SimpleGrantedAuthority(UserRoles.PHARMACIST.toString()));
 	}
 
 }

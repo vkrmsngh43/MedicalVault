@@ -15,11 +15,8 @@ public class DispatcherService {
 	@Autowired
 	HttpClient httpClient;
 	public void dispatchAccessCodeToUser(User user, User requester, String accessCode) {
-		StringBuilder message = new StringBuilder();
-		message.append("Hello ").append(user.getFirstName()).append("! ");
-		message.append("Mr. " + requester.getFirstName() + " has requested your private records. ");
-		message.append("To approve, please share TAC " + accessCode + " with him.");
 		
-		httpClient.sendMessage(user.getPhoneNumber(), message.toString());
+		logger.info("Dsiaptching accessCode to the user.");
+		//httpClient.sendMessage(user.getPhoneNumber(), user.getFirstName(), requester.getFirstName(), accessCode);
 	}
 }

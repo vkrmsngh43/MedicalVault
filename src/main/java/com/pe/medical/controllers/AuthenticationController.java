@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pe.medical.constants.ErrorConstants;
 import com.pe.medical.domain.User;
 import com.pe.medical.helper.DateTimeHelper;
 import com.pe.medical.model.AppUserRequest;
@@ -50,22 +51,21 @@ public class AuthenticationController {
 		// Reload password post-authentication so we can generate token
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(appUserRequest.getUsername());
 		String token = jwtTokenService.generateToken(userDetails);
-		return ResponseEntity.ok(new AuthenticationResponse(token));
+		return ResponseEntity.ok(
+				new AuthenticationResponse(token, ErrorConstants.SUCCESS_STATUS_CODE, ErrorConstants.SUCCESS_MESSAGE));
 	}
-	
+
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ResponseEntity<?> userSignup(@RequestBody SignupRequest signupRequest) throws AuthenticationException{
+	public ResponseEntity<?> userSignup(@RequestBody SignupRequest signupRequest) throws AuthenticationException {
 		Date currentTime = DateTimeHelper.getCurrentDate();
-		
-		User newUser = new User(signupRequest.getUsername(), signupRequest.getFirstName(),
-				signupRequest.getLastName(), 
-				new BCryptPasswordEncoder().encode(signupRequest.getPassword()),
-				signupRequest.getPhoneNumber(), signupRequest.getEmailId(),
-				"Admin");
+
+		User newUser = new User(signupRequest.getUsername(), signupRequest.getFirstName(), signupRequest.getLastName(),
+				new BCryptPasswordEncoder().encode(signupRequest.getPassword()), signupRequest.getPhoneNumber(),
+				signupRequest.getEmailId(), signupRequest.getUserType().toUpperCase());
 		newUser.setCreatedDate(currentTime);
 		userRepository.save(newUser);
 		return ResponseEntity.ok("Successfully Registered");
-		
+
 	}
 
 }

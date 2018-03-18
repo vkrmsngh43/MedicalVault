@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// .authenticationEntryPoint(this.unauthorizedHandler)
 				// .and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**", "/user/**").permitAll()
+				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**").permitAll()
 				.anyRequest().authenticated().and().cors();
 
 		// Custom JWT based authentication

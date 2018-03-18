@@ -56,12 +56,15 @@ public class AccessRequestServiceImpl implements AccessRequestService {
 			accessRequestRecords.setCreatedDate(DateTimeHelper.getCurrentDate());
 			accessRequestRecords.setStatus(ApplicationConstants.GENERATED);
 			accessRequestRecords.setAccessCodeTtl(ApplicationConstants.ACCESS_CODE_TTL);
+			
+			//create the record in DB for verification purpose.
+			accessRequestRecordsRepository.save(accessRequestRecords);
 			// send to user via twillio
 			dispatcherService.dispatchAccessCodeToUser(user, requester, accessCode);
+			return true;
 		} else {
 			throw new UsernameNotFoundException("User for id " + userId + ", doesnt exist.");
 		}
-		return false;
 	}
 	
 	/**
@@ -71,6 +74,8 @@ public class AccessRequestServiceImpl implements AccessRequestService {
 		logger.info("Verifying accessCode for userId: " + userId + "\n RequestedBy : " + requesterId + " \n accessCode:"
 				+ accessCode);
 		
+		boolean isVerified = false;
+		
 		AccessRequestRecords accessRequestRecords = accessRequestRecordsRepository
 				.getAccessRequestRecordsByRequesterIdAndUserId(Long.parseLong(userId), Long.parseLong(requesterId),
 						accessCode);
@@ -79,7 +84,17 @@ public class AccessRequestServiceImpl implements AccessRequestService {
 			Date validUntill = new Date(accessRequestRecords.getAccessCodeGeneratedAt().getTime()
 					+ accessRequestRecords.getAccessCodeTtl());
 			
-			return new Date(System.currentTimeMillis()).before(validUntill) ? true : false;
+			if(new Date(System.currentTimeMillis()).before(validUntill)) {
+				
+				accessRequestRecords.setStatus(ApplicationConstants.USED);
+				isVerified = true;
+			}else {
+				
+				accessRequestRecords.setStatus(ApplicationConstants.EXPIRED);
+			}
+			//update the accessCode status
+			accessRequestRecordsRepository.save(accessRequestRecords);
+			return  isVerified;
 		}
 		return false;
 	}

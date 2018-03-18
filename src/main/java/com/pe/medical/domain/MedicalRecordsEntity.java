@@ -1,5 +1,7 @@
 package com.pe.medical.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +47,9 @@ public class MedicalRecordsEntity extends BaseDao{
 	
 	@Column(name = "medical_history")
 	private String medicalHistory;
+	
+	@Column(name = "created_at")
+	private Date createdDate;
 	
 	//default constructor
 	public MedicalRecordsEntity() {
@@ -130,6 +135,12 @@ public class MedicalRecordsEntity extends BaseDao{
 	public void setMedicalHistory(String medicalHistory) {
 		this.medicalHistory = medicalHistory;
 	}
-	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 	
 }
