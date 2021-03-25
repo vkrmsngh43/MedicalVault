@@ -1,7 +1,7 @@
-package com.pe.medical.model.factory;
+package com.medicalvault.model.factory;
 
-import com.pe.medical.domain.User;
-import com.pe.medical.model.AppUser;
+import com.medicalvault.model.AppUser;
+import com.medicalvault.domain.User;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 public class AppUserFactory {

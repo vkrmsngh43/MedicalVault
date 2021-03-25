@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.helper;
+package com.medicalvault.helper;

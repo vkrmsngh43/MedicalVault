@@ -1,10 +1,10 @@
-package com.pe.medical.controllers;
+package com.medicalvault.controllers;
 
-import com.pe.medical.constants.ErrorConstants;
-import com.pe.medical.helper.SecurityContextHelper;
-import com.pe.medical.model.PrescriptionRecordsResponse;
-import com.pe.medical.service.AccessRequestService;
-import com.pe.medical.service.PrescriptionRecordsService;
+import com.medicalvault.constants.ErrorConstants;
+import com.medicalvault.helper.SecurityContextHelper;
+import com.medicalvault.model.PrescriptionRecordsResponse;
+import com.medicalvault.service.AccessRequestService;
+import com.medicalvault.service.PrescriptionRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

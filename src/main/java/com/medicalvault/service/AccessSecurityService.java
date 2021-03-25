@@ -1,11 +1,11 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public interface AccessSecurityService {
 
-  public Boolean hasAccessToMedicalRecords();
+  Boolean hasAccessToMedicalRecords();
 
-  public Boolean hasAccessToPrescriptionRecords();
+  Boolean hasAccessToPrescriptionRecords();
 }

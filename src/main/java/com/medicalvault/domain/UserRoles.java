@@ -1,7 +1,7 @@
-package com.pe.medical.domain;
+package com.medicalvault.domain;
 
 public enum UserRoles {
-  PATEINT,
+  PATIENT,
   DOCTOR,
   PHARMACIST
 }

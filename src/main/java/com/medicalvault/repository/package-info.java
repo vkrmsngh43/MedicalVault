@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.repository;
+package com.medicalvault.repository;

@@ -1,7 +1,7 @@
-package com.pe.medical.helper;
+package com.medicalvault.helper;
 
-import com.pe.medical.domain.User;
-import com.pe.medical.repository.UserRepository;
+import com.medicalvault.domain.User;
+import com.medicalvault.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityContextHelper {
 
-  @Autowired UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
   public String getCurrentUserId() {
     User user = getCurrentUser();

@@ -1,7 +1,7 @@
-package com.pe.medical.model.factory;
+package com.medicalvault.model.factory;
 
-import com.pe.medical.domain.PrescriptionRecordsEntity;
-import com.pe.medical.model.PrescriptionRecords;
+import com.medicalvault.model.PrescriptionRecords;
+import com.medicalvault.domain.PrescriptionRecordsEntity;
 
 public class PrescriptionRecordsFactory {
 

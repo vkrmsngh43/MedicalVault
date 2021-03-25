@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.model;
+package com.medicalvault.model;

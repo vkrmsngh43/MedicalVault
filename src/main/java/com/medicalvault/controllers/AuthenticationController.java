@@ -1,13 +1,13 @@
-package com.pe.medical.controllers;
+package com.medicalvault.controllers;
 
-import com.pe.medical.constants.ErrorConstants;
-import com.pe.medical.domain.User;
-import com.pe.medical.helper.DateTimeHelper;
-import com.pe.medical.model.AppUserRequest;
-import com.pe.medical.model.AuthenticationResponse;
-import com.pe.medical.model.SignupRequest;
-import com.pe.medical.repository.UserRepository;
-import com.pe.medical.service.JWTTokenService;
+import com.medicalvault.constants.ErrorConstants;
+import com.medicalvault.domain.User;
+import com.medicalvault.helper.DateTimeHelper;
+import com.medicalvault.model.AppUserRequest;
+import com.medicalvault.model.AuthenticationResponse;
+import com.medicalvault.model.SignupRequest;
+import com.medicalvault.repository.UserRepository;
+import com.medicalvault.service.JWTTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,10 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -44,7 +41,7 @@ public class AuthenticationController {
    * @return
    * @throws AuthenticationException
    */
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
   public ResponseEntity<?> authenticate(@RequestBody AppUserRequest appUserRequest)
       throws AuthenticationException {
     Authentication authentication =
@@ -65,25 +62,26 @@ public class AuthenticationController {
   /**
    * Register a new user.
    *
-   * @param signupRequest
+   * @param signupRequest SignupRequest
    * @return
    * @throws AuthenticationException
    */
-  @RequestMapping(value = "/signup", method = RequestMethod.POST)
+  @PostMapping(value = "/signup")
   public ResponseEntity<?> userSignup(@RequestBody SignupRequest signupRequest)
       throws AuthenticationException {
     Date currentTime = DateTimeHelper.getCurrentDate();
 
     User newUser =
-        new User(
-            signupRequest.getUsername(),
-            signupRequest.getFirstName(),
-            signupRequest.getLastName(),
-            new BCryptPasswordEncoder().encode(signupRequest.getPassword()),
-            signupRequest.getPhoneNumber(),
-            signupRequest.getEmailId(),
-            signupRequest.getUserType().toUpperCase());
-    newUser.setCreatedDate(currentTime);
+        User.builder()
+            .username(signupRequest.getUsername())
+            .firstName(signupRequest.getFirstName())
+            .lastName(signupRequest.getLastName())
+            .password(new BCryptPasswordEncoder().encode(signupRequest.getPassword()))
+            .phoneNumber(signupRequest.getPhoneNumber())
+            .emailId(signupRequest.getEmailId())
+            .authorities(signupRequest.getUserType().toUpperCase())
+            .createdDate(currentTime)
+            .build();
     userRepository.save(newUser);
     return ResponseEntity.ok("Successfully Registered");
   }

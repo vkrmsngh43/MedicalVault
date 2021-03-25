@@ -1,6 +1,6 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.model.PrescriptionRecordsResponse;
+import com.medicalvault.model.PrescriptionRecordsResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,8 +8,8 @@ public interface PrescriptionRecordsService {
   /**
    * Gets the prescription records for a given userId;
    *
-   * @param userId
+   * @param userId String
    * @return
    */
-  public PrescriptionRecordsResponse getPrescriptionRecordsOfUser(String userId);
+  PrescriptionRecordsResponse getPrescriptionRecordsOfUser(String userId);
 }

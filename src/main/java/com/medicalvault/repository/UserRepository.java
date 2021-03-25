@@ -1,6 +1,6 @@
-package com.pe.medical.repository;
+package com.medicalvault.repository;
 
-import com.pe.medical.domain.User;
+import com.medicalvault.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

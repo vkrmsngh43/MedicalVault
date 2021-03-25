@@ -1,4 +1,4 @@
-package com.pe.medical.model;
+package com.medicalvault.model;
 
 import java.util.List;
 

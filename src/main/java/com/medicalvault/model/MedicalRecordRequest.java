@@ -1,4 +1,4 @@
-package com.pe.medical.model;
+package com.medicalvault.model;
 
 public class MedicalRecordRequest extends BaseRequest {
 

@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.security;
+package com.medicalvault.security;

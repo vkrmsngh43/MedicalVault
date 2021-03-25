@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.domain;
+package com.medicalvault.domain;

@@ -1,6 +1,6 @@
-package com.pe.medical.security;
+package com.medicalvault.security;
 
-import com.pe.medical.service.AccessSecurityService;
+import com.medicalvault.service.AccessSecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

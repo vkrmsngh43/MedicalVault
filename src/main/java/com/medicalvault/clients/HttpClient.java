@@ -1,4 +1,4 @@
-package com.pe.medical.clients;
+package com.medicalvault.clients;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

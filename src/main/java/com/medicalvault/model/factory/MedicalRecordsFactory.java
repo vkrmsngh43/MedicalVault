@@ -1,7 +1,7 @@
-package com.pe.medical.model.factory;
+package com.medicalvault.model.factory;
 
-import com.pe.medical.domain.MedicalRecordsEntity;
-import com.pe.medical.model.MedicalRecords;
+import com.medicalvault.model.MedicalRecords;
+import com.medicalvault.domain.MedicalRecordsEntity;
 
 public class MedicalRecordsFactory {
 

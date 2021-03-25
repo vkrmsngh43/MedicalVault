@@ -1,7 +1,7 @@
 /** */
-package com.pe.medical.security;
+package com.medicalvault.security;
 
-import com.pe.medical.service.JWTTokenService;
+import com.medicalvault.service.JWTTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,8 @@ public class CustomAuthFilter extends UsernamePasswordAuthenticationFilter {
   private static Logger logger = LoggerFactory.getLogger(CustomAuthFilter.class);
   @Autowired UserDetailsService userDetailsService;
 
-  @Autowired JWTTokenService jwtTokenService;
+  @Autowired
+  JWTTokenService jwtTokenService;
 
   @Override
   public void doFilter(

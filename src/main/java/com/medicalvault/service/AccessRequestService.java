@@ -1,11 +1,11 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public interface AccessRequestService {
 
-  public boolean placeAccessRequest(String userId) throws Exception;
+  boolean placeAccessRequest(String userId) throws Exception;
 
-  public boolean verifyAccessCode(String userId, String requesterId, String accessCode);
+   boolean verifyAccessCode(String userId, String requesterId, String accessCode);
 }

@@ -1,13 +1,13 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.constants.ApplicationConstants;
-import com.pe.medical.domain.AccessRequestRecords;
-import com.pe.medical.domain.User;
-import com.pe.medical.helper.DateTimeHelper;
-import com.pe.medical.helper.GenericUtil;
-import com.pe.medical.helper.SecurityContextHelper;
-import com.pe.medical.repository.AccessRequestRecordsRepository;
-import com.pe.medical.repository.UserRepository;
+import com.medicalvault.domain.AccessRequestRecords;
+import com.medicalvault.domain.User;
+import com.medicalvault.helper.DateTimeHelper;
+import com.medicalvault.helper.GenericUtil;
+import com.medicalvault.helper.SecurityContextHelper;
+import com.medicalvault.repository.AccessRequestRecordsRepository;
+import com.medicalvault.repository.UserRepository;
+import com.medicalvault.constants.ApplicationConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,17 @@ import java.util.Optional;
 public class AccessRequestServiceImpl implements AccessRequestService {
 
   private static Logger logger = LoggerFactory.getLogger(AccessRequestServiceImpl.class);
-  @Autowired UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
-  @Autowired AccessRequestRecordsRepository accessRequestRecordsRepository;
+  @Autowired
+  AccessRequestRecordsRepository accessRequestRecordsRepository;
 
-  @Autowired SecurityContextHelper securityContextHelper;
+  @Autowired
+  SecurityContextHelper securityContextHelper;
 
-  @Autowired GenericUtil genericUtil;
+  @Autowired
+  GenericUtil genericUtil;
 
   @Autowired DispatcherService dispatcherService;
   /**

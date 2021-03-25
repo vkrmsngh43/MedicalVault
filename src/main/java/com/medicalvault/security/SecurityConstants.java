@@ -1,4 +1,4 @@
-package com.pe.medical.security;
+package com.medicalvault.security;
 
 /** @author vikramsingh */
 public class SecurityConstants {

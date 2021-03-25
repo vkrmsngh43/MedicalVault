@@ -1,12 +1,12 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.domain.User;
+import com.medicalvault.domain.User;
 
 import java.util.Optional;
 
 public interface UserService {
 
-  public User getUserByName(String username);
+  User getUserByName(String username);
 
-  public Optional<User> getUserById(Long id);
+  Optional<User> getUserById(Long id);
 }

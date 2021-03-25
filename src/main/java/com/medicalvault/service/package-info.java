@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.service;
+package com.medicalvault.service;

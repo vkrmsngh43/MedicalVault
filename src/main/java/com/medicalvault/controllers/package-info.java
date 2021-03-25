@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.controllers;
+package com.medicalvault.controllers;

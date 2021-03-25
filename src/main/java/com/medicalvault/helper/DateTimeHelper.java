@@ -1,4 +1,4 @@
-package com.pe.medical.helper;
+package com.medicalvault.helper;
 
 import org.springframework.stereotype.Component;
 

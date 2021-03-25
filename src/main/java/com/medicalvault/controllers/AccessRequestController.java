@@ -1,13 +1,13 @@
-package com.pe.medical.controllers;
+package com.medicalvault.controllers;
 
-import com.pe.medical.service.AccessRequestService;
+import com.medicalvault.service.AccessRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,12 +23,12 @@ public class AccessRequestController {
    * @return
    * @throws Exception
    */
-  @RequestMapping(value = "/request-access/user/{userId}", method = RequestMethod.GET)
+  @GetMapping(value = "/request-access/user/{userId}")
   @PreAuthorize(
       "@accessSecurityService.hasAccessToMedicalRecords() OR @accessSecurityService.hasAccessToPrescriptionRecords()")
   public ResponseEntity<String> requestAccess(@PathVariable("userId") String userId)
       throws Exception {
     accessRequestService.placeAccessRequest(userId);
-    return new ResponseEntity<String>("Access Request has been placed", HttpStatus.OK);
+    return new ResponseEntity<>("Access Request has been placed", HttpStatus.OK);
   }
 }

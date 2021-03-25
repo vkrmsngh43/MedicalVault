@@ -1,6 +1,6 @@
-package com.pe.medical.repository;
+package com.medicalvault.repository;
 
-import com.pe.medical.domain.PrescriptionRecordsEntity;
+import com.medicalvault.domain.PrescriptionRecordsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

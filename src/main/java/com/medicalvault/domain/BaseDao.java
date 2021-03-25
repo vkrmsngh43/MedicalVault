@@ -1,3 +1,3 @@
-package com.pe.medical.domain;
+package com.medicalvault.domain;
 
 public class BaseDao {}

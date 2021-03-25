@@ -1,13 +1,12 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.helper.DateTimeHelper;
-import com.pe.medical.model.AppUser;
-import com.pe.medical.security.SecurityConstants;
+import com.medicalvault.helper.DateTimeHelper;
+import com.medicalvault.model.AppUser;
+import com.medicalvault.security.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class JWTTokenService {
 
-  private static Logger logger = LoggerFactory.getLogger(JWTTokenService.class);
   /**
    * Extracts userName from the input token.
    *
@@ -29,10 +28,12 @@ public class JWTTokenService {
     String userName = null;
     try {
       Claims claims = getClaimsFromToken(token);
-      logger.info("Claims : " + claims.getSubject());
+
       userName = claims != null ? claims.getSubject() : null;
+
+      log.info("Claims : {}", claims.getSubject());
     } catch (Exception ex) {
-      logger.error("Error extracting username from token " + ex.getMessage());
+      log.error("Error extracting username from token {}", ex.getMessage());
       // ex.printStackTrace();
     }
     return userName;
@@ -50,8 +51,7 @@ public class JWTTokenService {
       final Claims claims = this.getClaimsFromToken(token);
       expiration = claims.getExpiration();
     } catch (Exception ex) {
-      logger.error("Error extracting Expiry date from token " + ex.getMessage());
-      // ex.printStackTrace();
+      log.error("Error extracting Expiry date from token {}", ex.getMessage());
     }
     return expiration;
   }
@@ -62,8 +62,7 @@ public class JWTTokenService {
       claims =
           Jwts.parser().setSigningKey(SecurityConstants.JWT_SECRET).parseClaimsJws(token).getBody();
     } catch (Exception ex) {
-      logger.error("Error parsing claims from token " + ex.getMessage());
-      // ex.printStackTrace();
+      log.error("Error parsing claims from token {}", ex.getMessage());
     }
     return claims;
   }
@@ -74,8 +73,8 @@ public class JWTTokenService {
    * @return
    */
   public String generateToken(UserDetails userDetails) {
-    logger.info("Generating claims for username :" + userDetails.getUsername());
-    Map<String, Object> claims = new HashMap<String, Object>();
+    log.info("Generating claims for username : {}", userDetails.getUsername());
+    Map<String, Object> claims = new HashMap<>();
     claims.put("sub", userDetails.getUsername());
     claims.put("created", DateTimeHelper.getCurrentDate());
     return Jwts.builder()

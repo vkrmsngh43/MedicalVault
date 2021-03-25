@@ -1,4 +1,4 @@
-package com.pe.medical.constants;
+package com.medicalvault.constants;
 
 public class ErrorConstants {
 

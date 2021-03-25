@@ -1,16 +1,16 @@
-package com.pe.medical.controllers;
+package com.medicalvault.controllers;
 
-import com.pe.medical.constants.ErrorConstants;
-import com.pe.medical.helper.SecurityContextHelper;
-import com.pe.medical.model.MedicalRecordsResponse;
-import com.pe.medical.service.AccessRequestService;
-import com.pe.medical.service.MedicalRecordsService;
+import com.medicalvault.constants.ErrorConstants;
+import com.medicalvault.helper.SecurityContextHelper;
+import com.medicalvault.model.MedicalRecordsResponse;
+import com.medicalvault.service.AccessRequestService;
+import com.medicalvault.service.MedicalRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,7 +29,7 @@ public class MedicalRecordsController {
    * @param accessCode
    * @return
    */
-  @RequestMapping(value = "/find/{userId}/accesscode/{accesscode}", method = RequestMethod.GET)
+  @GetMapping(value = "/find/{userId}/accesscode/{accesscode}")
   @PreAuthorize("@accessSecurityService.hasAccessToMedicalRecords()")
   public ResponseEntity<MedicalRecordsResponse> getMedicalRecords(
       @PathVariable("userId") String userId, @PathVariable("accesscode") String accessCode) {

@@ -1,24 +1,21 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.constants.ErrorConstants;
-import com.pe.medical.domain.PrescriptionRecordsEntity;
-import com.pe.medical.model.PrescriptionRecords;
-import com.pe.medical.model.PrescriptionRecordsResponse;
-import com.pe.medical.model.factory.PrescriptionRecordsFactory;
-import com.pe.medical.repository.PrescriptionRecordsRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.medicalvault.constants.ErrorConstants;
+import com.medicalvault.domain.PrescriptionRecordsEntity;
+import com.medicalvault.model.PrescriptionRecords;
+import com.medicalvault.model.PrescriptionRecordsResponse;
+import com.medicalvault.model.factory.PrescriptionRecordsFactory;
+import com.medicalvault.repository.PrescriptionRecordsRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
+@Slf4j
 public class PrescriptionRecordsServiceImpl implements PrescriptionRecordsService {
-
-  private static Logger logger = LoggerFactory.getLogger(PrescriptionRecordsServiceImpl.class);
 
   @Autowired PrescriptionRecordsRepository prescriptionRecordsRepository;
 
@@ -29,27 +26,23 @@ public class PrescriptionRecordsServiceImpl implements PrescriptionRecordsServic
       List<PrescriptionRecordsEntity> prescriptionRecordsEntities =
           prescriptionRecordsRepository.findAllPrescriptionRecordsByUserId(Long.parseLong(userId));
       List<PrescriptionRecords> prescriptionRecords = new ArrayList<>();
-      if (prescriptionRecordsEntities != null && prescriptionRecordsEntities.size() > 0) {
-        for (Iterator<PrescriptionRecordsEntity> iterator = prescriptionRecordsEntities.iterator();
-            iterator.hasNext(); ) {
-          PrescriptionRecordsEntity prescriptionRecordsEntity =
-              (PrescriptionRecordsEntity) iterator.next();
-          prescriptionRecords.add(PrescriptionRecordsFactory.create(prescriptionRecordsEntity));
-        }
-        prescriptionRecordsResponse.setPrescriptionRecords(prescriptionRecords);
-        prescriptionRecordsResponse.setStatusCode(ErrorConstants.SUCCESS_STATUS_CODE);
-        prescriptionRecordsResponse.setMessage(ErrorConstants.SUCCESS_MESSAGE);
-      } else {
+      if (prescriptionRecordsEntities == null || prescriptionRecordsEntities.isEmpty()) {
         prescriptionRecordsResponse.setStatusCode(ErrorConstants.SUCCESS_STATUS_CODE);
         prescriptionRecordsResponse.setMessage(ErrorConstants.ERR_PRESCRIPTION_RECORDS_NOT_FOUND);
+        return prescriptionRecordsResponse;
       }
+      for (PrescriptionRecordsEntity prescriptionRecordsEntity : prescriptionRecordsEntities) {
+        prescriptionRecords.add(PrescriptionRecordsFactory.create(prescriptionRecordsEntity));
+      }
+      prescriptionRecordsResponse.setPrescriptionRecords(prescriptionRecords);
+      prescriptionRecordsResponse.setStatusCode(ErrorConstants.SUCCESS_STATUS_CODE);
+      prescriptionRecordsResponse.setMessage(ErrorConstants.SUCCESS_MESSAGE);
 
     } catch (Exception ex) {
-      logger.error(
-          "An error occurred while getting prescription records for userId : "
-              + userId
-              + " Message : "
-              + ex.getMessage());
+      log.error(
+          "An error occurred while getting prescription records for userId : {}, Message {} ",
+          userId,
+          ex.getMessage());
       prescriptionRecordsResponse.setStatusCode(ErrorConstants.FAILED_STATUS_CODE);
       prescriptionRecordsResponse.setMessage(ErrorConstants.ERR_PROCESSING_PRESCRIPTION_RECORDS);
     }

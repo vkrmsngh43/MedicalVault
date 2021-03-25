@@ -1,24 +1,21 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.domain.MedicalRecordsEntity;
-import com.pe.medical.model.MedicalRecords;
-import com.pe.medical.model.MedicalRecordsResponse;
-import com.pe.medical.model.factory.MedicalRecordsFactory;
-import com.pe.medical.repository.MedicalRecordsRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.medicalvault.domain.MedicalRecordsEntity;
+import com.medicalvault.model.MedicalRecords;
+import com.medicalvault.model.MedicalRecordsResponse;
+import com.medicalvault.model.factory.MedicalRecordsFactory;
+import com.medicalvault.repository.MedicalRecordsRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class MedicalRecordsServiceImpl implements MedicalRecordsService {
-
-  private static Logger logger = LoggerFactory.getLogger(MedicalRecordsServiceImpl.class);
 
   @Autowired MedicalRecordsRepository medicalRecordsRepository;
 
@@ -36,15 +33,13 @@ public class MedicalRecordsServiceImpl implements MedicalRecordsService {
       if (medicalRecords != null) {
         List<MedicalRecords> medicalRecordsModel = new ArrayList<>();
 
-        for (Iterator<MedicalRecordsEntity> iterator = medicalRecords.iterator();
-            iterator.hasNext(); ) {
-          MedicalRecordsEntity medicalRecordsEntity = iterator.next();
+        for (MedicalRecordsEntity medicalRecordsEntity : medicalRecords) {
           medicalRecordsModel.add(MedicalRecordsFactory.create(medicalRecordsEntity));
         }
         medicalRecordsResponse.setMedicalRecords(medicalRecordsModel);
       }
     } catch (Exception ex) {
-      logger.error("An error while fetching medical records..");
+      log.error("An error while fetching medical records. Error {}", ex.getMessage());
       ex.printStackTrace();
     }
     return medicalRecordsResponse;

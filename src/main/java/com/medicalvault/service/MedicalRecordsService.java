@@ -1,7 +1,7 @@
-package com.pe.medical.service;
+package com.medicalvault.service;
 
-import com.pe.medical.domain.MedicalRecordsEntity;
-import com.pe.medical.model.MedicalRecordsResponse;
+import com.medicalvault.domain.MedicalRecordsEntity;
+import com.medicalvault.model.MedicalRecordsResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public interface MedicalRecordsService {
 
-  public Optional<MedicalRecordsEntity> getMedicalRecordById(Long id);
+  Optional<MedicalRecordsEntity> getMedicalRecordById(Long id);
 
-  public MedicalRecordsResponse getMedicalRecordsByUserId(Long userId);
+  MedicalRecordsResponse getMedicalRecordsByUserId(Long userId);
 }

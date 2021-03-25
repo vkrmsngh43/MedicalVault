@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.pe.medical.constants;
+package com.medicalvault.constants;
