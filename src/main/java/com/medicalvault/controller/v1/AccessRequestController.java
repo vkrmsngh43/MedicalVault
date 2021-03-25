@@ -1,4 +1,4 @@
-package com.medicalvault.controllers;
+package com.medicalvault.controller.v1;
 
 import com.medicalvault.service.AccessRequestService;
 import org.springframework.beans.factory.annotation.Autowired;

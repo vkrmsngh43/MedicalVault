@@ -1,2 +1,2 @@
 /** @author vikramsingh */
-package com.medicalvault.controllers;
+package com.medicalvault.controller.v1;

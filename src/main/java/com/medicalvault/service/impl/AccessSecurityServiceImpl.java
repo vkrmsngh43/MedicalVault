@@ -1,6 +1,7 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.domain.UserRoles;
+import com.medicalvault.service.AccessSecurityService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.domain.AccessRequestRecords;
 import com.medicalvault.domain.User;
@@ -8,6 +8,8 @@ import com.medicalvault.helper.SecurityContextHelper;
 import com.medicalvault.repository.AccessRequestRecordsRepository;
 import com.medicalvault.repository.UserRepository;
 import com.medicalvault.constants.ApplicationConstants;
+import com.medicalvault.service.AccessRequestService;
+import com.medicalvault.service.DispatcherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,8 @@ public class AccessRequestServiceImpl implements AccessRequestService {
   @Autowired
   GenericUtil genericUtil;
 
-  @Autowired DispatcherService dispatcherService;
+  @Autowired
+  DispatcherService dispatcherService;
   /**
    * Creates an entry in the accessRequestRecords with an accessCode. User would approve to this
    * request by providing this accessCode and then only a person can view the requested resource.

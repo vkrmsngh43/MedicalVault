@@ -1,4 +1,4 @@
-package com.medicalvault.controllers;
+package com.medicalvault.controller.v1;
 
 import com.medicalvault.constants.ErrorConstants;
 import com.medicalvault.helper.SecurityContextHelper;
@@ -7,10 +7,7 @@ import com.medicalvault.service.AccessRequestService;
 import com.medicalvault.service.PrescriptionRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/prescriptionrecords")
@@ -22,7 +19,7 @@ public class PrescriptionRecordsController {
 
   @Autowired SecurityContextHelper securityContextHelper;
 
-  @RequestMapping(value = "/find/user/{userId}/{accesscode}", method = RequestMethod.GET)
+  @GetMapping(value = "/find/user/{userId}/{accesscode}")
   public ResponseEntity<PrescriptionRecordsResponse> getPrescriptionRecords(
       @PathVariable("userId") String userId, @PathVariable("accesscode") String accessCode) {
     PrescriptionRecordsResponse prescriptionRecordsResponse = new PrescriptionRecordsResponse();

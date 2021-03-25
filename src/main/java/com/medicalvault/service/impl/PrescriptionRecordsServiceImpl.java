@@ -1,4 +1,4 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.constants.ErrorConstants;
 import com.medicalvault.domain.PrescriptionRecordsEntity;
@@ -6,6 +6,7 @@ import com.medicalvault.model.PrescriptionRecords;
 import com.medicalvault.model.PrescriptionRecordsResponse;
 import com.medicalvault.model.factory.PrescriptionRecordsFactory;
 import com.medicalvault.repository.PrescriptionRecordsRepository;
+import com.medicalvault.service.PrescriptionRecordsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

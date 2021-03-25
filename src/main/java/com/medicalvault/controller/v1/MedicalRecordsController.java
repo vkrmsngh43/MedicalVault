@@ -1,4 +1,4 @@
-package com.medicalvault.controllers;
+package com.medicalvault.controller.v1;
 
 import com.medicalvault.constants.ErrorConstants;
 import com.medicalvault.helper.SecurityContextHelper;

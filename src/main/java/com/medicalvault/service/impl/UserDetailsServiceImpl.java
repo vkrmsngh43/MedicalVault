@@ -1,4 +1,4 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.domain.User;
 import com.medicalvault.model.factory.AppUserFactory;

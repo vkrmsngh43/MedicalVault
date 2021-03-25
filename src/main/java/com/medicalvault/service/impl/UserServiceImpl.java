@@ -1,7 +1,8 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.domain.User;
 import com.medicalvault.repository.UserRepository;
+import com.medicalvault.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;

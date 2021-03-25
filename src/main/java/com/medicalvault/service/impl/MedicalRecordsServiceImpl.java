@@ -1,10 +1,11 @@
-package com.medicalvault.service;
+package com.medicalvault.service.impl;
 
 import com.medicalvault.domain.MedicalRecordsEntity;
 import com.medicalvault.model.MedicalRecords;
 import com.medicalvault.model.MedicalRecordsResponse;
 import com.medicalvault.model.factory.MedicalRecordsFactory;
 import com.medicalvault.repository.MedicalRecordsRepository;
+import com.medicalvault.service.MedicalRecordsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
