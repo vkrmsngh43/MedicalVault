@@ -1,4 +1,4 @@
-# PEMedicalApp
+# MedicalVault
 This is a service which manages (Keeps and Secures) the medical and prescription records of a patient. A doctor or a pharmacist has to request access to view a medical record or prescription of a patient.
 
 ## Working Flow 
