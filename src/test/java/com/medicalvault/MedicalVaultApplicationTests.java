@@ -1,4 +1,4 @@
-package com.pe.medical;
+package com.medicalvault;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

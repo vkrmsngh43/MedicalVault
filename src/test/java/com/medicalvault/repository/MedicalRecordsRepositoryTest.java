@@ -1,7 +1,7 @@
-package com.pe.medical.repository;
+package com.medicalvault.repository;
 
-import com.pe.medical.domain.MedicalRecordsEntity;
-import com.pe.medical.domain.User;
+import com.medicalvault.domain.MedicalRecordsEntity;
+import com.medicalvault.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,8 @@ public class MedicalRecordsRepositoryTest {
 
     System.out.println("Running tests on medicalRecords repository...");
 
-    User user = new User("MedicalRecordUser", "MEdical", "Teste", null, null, null, null);
+    User user =
+        User.builder().username("MedicalRecordUser").firstName("Medical").lastName("Teste").build();
     testEntityManager.persist(user);
 
     MedicalRecordsEntity medicalRecordsEntity = new MedicalRecordsEntity();
